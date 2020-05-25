@@ -4,7 +4,8 @@
   "description": "学习webpack4.0.基础构建。",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/liuyuanyuannumberone/webpack-basic#readme",
   "devDependencies": {
+    "file-loader": "^6.0.0",
     "webpack": "^4.26.0",
     "webpack-cli": "^3.1.2"
   }
