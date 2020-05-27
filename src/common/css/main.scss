@@ -1,6 +1,11 @@
-body{
-  .sc{
+@import '../font/iconfont.css';
+
+body {
+  .sc {
     height: 100px;
-    width: 500px;
+    width: 100px;
+    transform: translate(100px, 100px);
   }
+
 }
+
