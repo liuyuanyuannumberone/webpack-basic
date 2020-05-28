@@ -4,8 +4,9 @@
   "description": "学习webpack4.0.基础构建。",
   "main": "index.js",
   "scripts": {
-    "test": "echo \\\"Error: no test specified\\\" && exit postcss.config.js",
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "webpack-dev-server",
+    "middleware": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
   "homepage": "https://github.com/liuyuanyuannumberone/webpack-basic#readme",
   "devDependencies": {
     "autoprefixer": "^9.8.0",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.3",
+    "express": "^4.17.1",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "postcss-loader": "^3.0.0",
@@ -28,7 +31,9 @@
     "style-loader": "^1.2.1",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {}
 }

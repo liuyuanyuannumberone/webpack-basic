@@ -11,3 +11,4 @@ img.classList.add("sc");
 var root = document.getElementById("root");
 root.innerHTML='<div class="iconfont icongongzuotai">abc</div>';
 root.append(img);
+console.log(34)
