@@ -10,7 +10,7 @@
 ### npm uninstall 模块名
 ### npm i webpack@4.26.0   webpack-cli@3.1.2 -D
 ### npm outdated  查看过时的包
-######## npm config get registry   原版镜像    设置阿里 npm config set registry https://registry.npm.taobao.org
+######## npm config get registry 原版镜像 设置阿里 npm config set registry https://registry.npm.taobao.org
 ####  或者直接  npm i --registry=https://registry.npm.taobao.org  clean-webpack-plugin -D
 
 
