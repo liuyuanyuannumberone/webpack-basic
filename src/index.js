@@ -2,9 +2,17 @@ import girl from './common/image/girl.jpg';
 import './common/css/index.css'
 import style from './common/css/main.scss'  ////css模块化打包 这样引入样式文件
 import './common/css/main.scss'
-import _ from 'lodash'
-import {add} from './math';
 
+import {add} from './common/js/math';
+/*
+ import $  from 'jquery'
+ import _ from 'lodash'
+ webpack.common.js 配置了全局使用，所以无需单独引入
+*/
+
+import library_math from '../library/library-math'
+
+console.log(library_math);
 
 
 let img = new Image();
@@ -37,8 +45,11 @@ add(1, 10);
 
 console.log(_.join([1, 2, 3], '*******'));
 
-document.addEventListener('click',()=>{
-    const element=document.createElement('div');
-    element.innerHTML='LYY';
+document.addEventListener('click', () => {
+    const element = document.createElement('div');
+    element.innerHTML = 'LYY';
     document.body.appendChild(element);
 });
+
+console.log($('div'));
+

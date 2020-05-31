@@ -1,6 +1,4 @@
 const webpack = require('webpack');
-const merge = require('webpack-merge');
-const commonConfig=require('./webpack.common');
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -53,6 +51,14 @@ const devConfig = {
         // ，不会更改js的内容   HMR模块
         new BundleAnalyzerPlugin(),
     ],
+    output: {
+        // publicPath: "/",
+        // publicPath: "http://cdn.com.cn", //打包完成后的文件会变成
+        // <script src="http://cdn./com.cn/main.js"></script>
+        filename: '[name].js',  //占位符
+        chunkFilename: "[name].js",
+        path: path.resolve(__dirname, '../dist')
+    },
     // optimization:{
     //     usedExports: true,
     // }
@@ -61,4 +67,4 @@ const devConfig = {
 // 开发模式下不生效，生产环境需要配置 "sideEffects": false，不需要配置optimization。
 };
 
-module.exports=merge(commonConfig,devConfig);
+module.exports=devConfig;

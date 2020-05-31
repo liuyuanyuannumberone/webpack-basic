@@ -1,5 +1,3 @@
-const merge = require('webpack-merge');
-const commonConfig = require('./webpack.common');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -35,10 +33,18 @@ const prodConfig = {
         filename:'[name].css',
         chunkFilename: '[name].chunk.css',
     })],
+    output: {
+        // publicPath: "/",
+        // publicPath: "http://cdn.com.cn", //打包完成后的文件会变成
+        // <script src="http://cdn./com.cn/main.js"></script>
+        filename: '[name].[contenthash].js',  //占位符
+        chunkFilename: "[name].[contenthash].js",
+        //contenthash产生新文件名，浏览器不会利用本地缓存的文件，就会重新加载新打包文件。
+    },
     optimization: {
         minimizer: [new OptimizeCSSAssetsPlugin({})],  //css代码压缩
     },
 };
 
 
-module.exports = merge(commonConfig, prodConfig);
+module.exports = prodConfig;
