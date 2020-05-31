@@ -10,16 +10,30 @@ const devConfig = {
 // ，无法知道源码的那个位置出错，sourceMap他是一个映射关系 ,他会告诉你源文件哪行报错。(映射关系，打包后有map文件)
     devServer: {
         contentBase: path.join(__dirname, './dist'),       // contentBase:'./dist'也可以
-        // port: 9000, //默认8080
-        // compress: true,
+        port: 9000, //默认8080
         open: true,
         hot: true,
-        proxy: {
-            '/api': {
-                target: 'https://other-server.example.com',
-                secure: false
+        proxy: [
+            {
+                '/react/api': {
+                    target: 'http://www.baidu.com',//(/react/api/head.json)
+                    pathRewrite: {"head.json": "data.json"}, //后端说先用这个
+                    secure: false,   //实现了/react/api/head.json变为请求/react/api/data.json
+                    bypass: function (req, res, proxyOptions) {
+                        if (req.headers.accept.indexOf('html') !== -1) {
+                            console.log('Skipping proxy for browser request.');
+                            return false;  //不走代理
+                        }
+                    },
+                    changeOrigin:true,
+                }
+            },
+            {
+                context: ['/api', '/auth'],
+                target: 'https://google.com',
+                secure: false,
             }
-        }
+        ],
     },
     module: {
         rules: [
@@ -67,4 +81,4 @@ const devConfig = {
 // 开发模式下不生效，生产环境需要配置 "sideEffects": false，不需要配置optimization。
 };
 
-module.exports=devConfig;
+module.exports = devConfig;

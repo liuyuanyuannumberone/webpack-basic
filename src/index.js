@@ -10,9 +10,7 @@ import {add} from './common/js/math';
  webpack.common.js 配置了全局使用，所以无需单独引入
 */
 
-import library_math from '../library/library-math'
 
-console.log(library_math);
 
 
 let img = new Image();
@@ -53,3 +51,17 @@ document.addEventListener('click', () => {
 
 console.log($('div'));
 
+
+
+//即使断网，浏览器也可以利用缓存运行
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+                console.log("Service Worker is Running");
+            })
+            .catch(err => {
+               throw err;
+            })
+    })
+}

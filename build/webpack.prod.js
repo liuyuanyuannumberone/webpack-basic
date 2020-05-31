@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const prodConfig = {
     mode: 'production',
@@ -29,10 +29,15 @@ const prodConfig = {
             },
         ],
     },
-    plugins:[new MiniCssExtractPlugin({
-        filename:'[name].css',
+    plugins: [new MiniCssExtractPlugin({
+        filename: '[name].css',
         chunkFilename: '[name].chunk.css',
-    })],
+    }),
+        new WorkboxPlugin.GenerateSW({   //PWA
+            clientsClaim: true,
+            skipWaiting: true,
+        })], //serviceworker
+
     output: {
         // publicPath: "/",
         // publicPath: "http://cdn.com.cn", //打包完成后的文件会变成
