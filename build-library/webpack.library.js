@@ -3,11 +3,12 @@
 * 打包库
 *
 * */
-
 const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyrightWebpackPlugin = require('../library-plugin/copyright-webpack-plugin');
+
 
 module.exports = {
     mode: 'production',
@@ -23,10 +24,30 @@ module.exports = {
             $: 'jquery',
             _: 'lodash',
         }),
+        new CopyrightWebpackPlugin({
+            name: 'liuyuanyuan',
+        })
     ],
-    externals:[],  //'lodash'  写入你已经依赖过的库，避免对方再次引入你依赖的库，造成两
+    externals: [],  //'lodash'  写入你已经依赖过的库，避免对方再次引入你依赖的库，造成两
     //次同样库的打包
-
+    resolveLoader: {
+        modules: ['node_modules', './library-loader'],
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                use: [
+                    {
+                        loader: 'loader',
+                        options: {
+                            name: "lyy",
+                        }
+                    },
+                ]
+            }
+        ],
+    },
     output: {
         filename: 'library-math.js',
         path: path.resolve(__dirname, '../library'),
