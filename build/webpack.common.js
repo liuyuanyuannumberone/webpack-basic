@@ -43,7 +43,6 @@ const commonConfig = {
                             // 用babelrc，runtime 免类库污染
                         },
                     },
-                    // "imports-loader?this=>window"
                 ],
             }
         ],
@@ -97,9 +96,9 @@ const commonConfig = {
 module.exports = (env) => {   //环境变量
     if (env && env.production) {
         //线上环境
-        return merge(commonConfig,prodConfig);
+        return merge(commonConfig, prodConfig);
     } else {
         //开发环境
-        return merge(commonConfig,devConfig);
+        return merge(commonConfig, devConfig);
     }
 };

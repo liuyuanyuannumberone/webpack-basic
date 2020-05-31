@@ -5,9 +5,7 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
-        "plugin:vue/essential",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:vue/essential"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -15,12 +13,10 @@ module.exports = {
     },
     "parserOptions": {
         "ecmaVersion": 11,
-        "parser": "@typescript-eslint/parser",
         "sourceType": "module"
     },
     "plugins": [
-        "vue",
-        "@typescript-eslint"
+        "vue"
     ],
     "rules": {
     }
